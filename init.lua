@@ -1,4 +1,3 @@
--- Basic settings
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.tabstop = 4 
@@ -9,7 +8,6 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.g.mapleader = ' '
 
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -20,9 +18,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Plugins
 require("lazy").setup({
-  -- LSP
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -53,7 +49,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Autocomplete
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -117,7 +112,6 @@ require("lazy").setup({
   },
 })
 
--- Keymaps
 vim.keymap.set('n', '<leader>w', ':w<CR>')
 vim.keymap.set('n', '<leader>q', ':q<CR>')
 vim.keymap.set('v', '<', '<gv')
