@@ -13,10 +13,14 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/nvim/bin:$PATH"
 export PATH="/opt/nvim-linux-x86_64/bin:/opt/nvim/bin:$PATH"
 
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$HOME/.dotnet:$PATH
+
 eval "$(starship init bash)"
 
 alias ll='ls -alF'
-alias yeet-up='git push --set-upstream origin'
+alias git-up='git push --set-upstream origin'
+alias git-rollback='git reset --hard'
 
 echo -e "\033[1;36m"
 echo "╔═══════════════════════════════════════════════════════════╗"
