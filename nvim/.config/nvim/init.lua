@@ -11,12 +11,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    require("plugins.lsp"),
-    require("plugins.autocomplete"),
-    require("plugins.filetree"),
-    require("plugins.grep"),
-    require("plugins.theme"),
-    require("plugins.ats")
+    require("plugins.lang").ats,
+    require("plugins.lang").lsp,
+    require("plugins.lang").autocomplete,
+    require("plugins.files"),
+    require("plugins.theme")
 })
 
 require("keymaps")
