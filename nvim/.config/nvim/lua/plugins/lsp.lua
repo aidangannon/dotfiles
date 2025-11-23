@@ -23,10 +23,11 @@ return {
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = { "ts_ls", "pyright" }
+            ensure_installed = { "ts_ls", "pyright", "lua_ls" }
         })
         
         vim.lsp.enable("ts_ls")
+        vim.lsp.enable("lua_ls")
         vim.lsp.enable("pyright")
     end
 }
