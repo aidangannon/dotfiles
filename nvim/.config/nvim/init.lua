@@ -15,7 +15,16 @@ require("lazy").setup({
     require("plugins.lang").lsp,
     require("plugins.lang").autocomplete,
     require("plugins.files"),
-    require("plugins.theme")
+    require("plugins.theme"),
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    }
 })
 
 require("keymaps")
