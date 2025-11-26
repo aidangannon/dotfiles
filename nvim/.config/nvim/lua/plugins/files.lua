@@ -2,7 +2,8 @@ local snacks_keymaps = {
     { "<leader>ff", function() Snacks.picker.files() end },
     { "<leader>fg", function() Snacks.picker.grep() end },
     { "<leader>fs", function() Snacks.picker.lsp_symbols() end },
-    { "<leader>rF", function() Snacks.rename.rename_file() end }
+    { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end },
+    { "<leader>rF", function() Snacks.rename.rename_file() end },
 }
 
 local function nvim_tree_keymaps()

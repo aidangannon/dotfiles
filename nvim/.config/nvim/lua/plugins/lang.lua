@@ -10,6 +10,8 @@ local function lsp_keymaps()
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = args.buf })
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = args.buf })
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf })
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })
@@ -20,27 +22,25 @@ local function lsp_keymaps()
     })
 end
 
+local code_navigation_keys = {
+    { "[s", "<cmd>AerialPrev<cr>", desc = "Previous symbol" },
+    { "]s", "<cmd>AerialNext<cr>", desc = "Next symbol" },
+    { "<leader>a", "<cmd>AerialToggle<cr>", desc = "Toggle aerial outline" }
+}
+
 lsp_keymaps()
 
 return {
+    navigation = {
+        "stevearc/aerial.nvim",
+        opts = {},
+        keys = code_navigation_keys
+    },
     ats = {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
-                textobjects = {
-                    move = {
-                        enable = true,
-                        goto_next_start = {
-                            ["]f"] = "@function.outer",
-                            ["]c"] = "@class.outer",
-                        },
-                        goto_previous_start = {
-                            ["[f"] = "@function.outer",
-                            ["[c"] = "@class.outer",
-                        },
-                    },
-                },
                 ensure_installed = {
                     "python",
                     "typescript",

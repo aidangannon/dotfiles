@@ -21,6 +21,7 @@ require("lazy").setup({
         }
     },
     require("plugins.csharp"),
+    require("plugins.lang").navigation,
     require("plugins.lang").ats,
     require("plugins.lang").lsp,
     require("plugins.lang").autocomplete,
