@@ -1,3 +1,11 @@
+vim.diagnostic.config({
+    update_in_insert = true,
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    severity_sort = true,
+})
+
 local function lsp_keymaps()
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)

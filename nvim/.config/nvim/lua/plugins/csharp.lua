@@ -4,6 +4,6 @@ end, { desc = "Install C# tools" })
 
 return {
     "seblyng/roslyn.nvim",
-    ft = { "cs", "razor" },
+    ft = { "cs" },
     opts = {}
 }

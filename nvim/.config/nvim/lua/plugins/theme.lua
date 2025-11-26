@@ -1,7 +1,9 @@
 return {
-    "projVekt0n/github-nvim-theme",
+    "folke/tokyonight.nvim",
     config = function()
-        require("github-theme").setup()
-        vim.cmd("colorscheme github_light")
+        require("tokyonight").setup({
+            style = "day", -- day, storm, night, or moon
+        })
+        vim.cmd("colorscheme tokyonight-day")
     end
 }
