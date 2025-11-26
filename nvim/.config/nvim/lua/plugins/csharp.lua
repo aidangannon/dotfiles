@@ -4,19 +4,6 @@ local function c_sharp_setup_cmd()
     end, { desc = "Install C# tools" })
 end
 
-local function auto_start_roslyn_autocmd()
-    vim.api.nvim_create_autocmd("VimEnter", {
-        callback = function()
-            local has_sln = vim.fn.glob("*.sln") ~= ""
-            local has_csproj = vim.fn.glob("**/*.csproj") ~= ""
-
-            if has_sln or has_csproj then
-                vim.cmd("Roslyn start")
-            end
-        end
-    })
-end
-
 local function sync_filesys_to_namespace_autocmd()
     vim.api.nvim_create_autocmd("BufWritePost", {
         pattern = "*.cs",
@@ -34,11 +21,17 @@ local function sync_filesys_to_namespace_autocmd()
 end
 
 c_sharp_setup_cmd()
-auto_start_roslyn_autocmd()
 sync_filesys_to_namespace_autocmd()
+
+local function in_csharp_project()
+    local has_sln = vim.fn.glob("*.sln") ~= ""
+    local has_csproj = vim.fn.glob("**/*.csproj") ~= ""
+    return has_sln or has_csproj
+end
 
 return {
     "seblyng/roslyn.nvim",
+    lazy = not in_csharp_project(),
     ft = { "cs" },
     opts = {}
 }
