@@ -71,6 +71,14 @@ return {
                     "terraformls"
                 }
             })
+            vim.lsp.config("roslyn", {
+                settings = {
+                    ["csharp|completion"] = {
+                        dotnet_show_completion_items_from_unimported_namespaces = true,
+                    }
+                }
+            })
+
 
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("lua_ls")
@@ -86,6 +94,7 @@ return {
         },
         config = function()
             local cmp = require("cmp")
+
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -94,11 +103,17 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<CR>"] = cmp.mapping.confirm({
+                        select = true,
+                        behavior = cmp.ConfirmBehavior.Replace
+                    }),
                     ["<C-Space>"] = cmp.mapping.complete()
                 }),
                 sources = {
                     { name = "nvim_lsp" }
+                },
+                experimental = {
+                    ghost_text = true
                 }
             })
         end

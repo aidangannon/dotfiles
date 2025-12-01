@@ -4,36 +4,35 @@ local function c_sharp_setup_cmd()
     end, { desc = "Install C# tools" })
 end
 
-local function sync_filesys_to_namespace_autocmd()
-    vim.api.nvim_create_autocmd("BufWritePost", {
-        pattern = "*.cs",
-        callback = function()
-            vim.defer_fn(function()
-                vim.lsp.buf.code_action({
-                    filter = function(action)
-                        return action.title:match("namespace") ~= nil
-                    end,
-                    apply = true,
-                })
-            end, 300)
-        end
-    })
-end
-
 c_sharp_setup_cmd()
-sync_filesys_to_namespace_autocmd()
-
--- Configure roslyn BEFORE the plugin loads
-vim.lsp.config("roslyn", {
-    settings = {
-        ["csharp|completion"] = {
-            dotnet_show_completion_items_from_unimported_namespaces = true,
-        }
-    }
-})
 
 return {
     "seblyng/roslyn.nvim",
-    lazy = false,
-    opts = {}
+    ft = "cs",
+    opts = {
+        filewatching = "roslyn"
+    },
+    settings = {
+        ["csharp|inlay_hints"] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true
+        },
+        ["csharp|code_lens"] = {
+            dotnet_enable_references_code_lens = true,
+        },
+        ["csharp|background_analysis"] = {
+            dotnet_compiler_diagnostics_scope = "fullSolution",
+            dotnet_analyzer_diagnostics_scope = "fullSolution",
+        },
+    },
+    config = function(_, opts)
+        require("roslyn").setup(opts)
+
+        vim.api.nvim_create_autocmd({"BufEnter", "BufWritePost", "InsertLeave"}, {
+            pattern = "*.cs",
+            callback = function(ev)
+                vim.lsp.buf.document_highlight()
+            end
+        })
+    end
 }
