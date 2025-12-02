@@ -71,14 +71,6 @@ return {
                     "terraformls"
                 }
             })
-            vim.lsp.config("roslyn", {
-                settings = {
-                    ["csharp|completion"] = {
-                        dotnet_show_completion_items_from_unimported_namespaces = true,
-                    }
-                }
-            })
-
 
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("lua_ls")
