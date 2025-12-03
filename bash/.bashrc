@@ -15,7 +15,9 @@ export PATH="/opt/nvim/bin:$PATH"
 eval "$(starship init bash)"
 
 alias ll='ls -alF'
-alias yeet-up='git push --set-upstream origin'
+alias git-up='git push --set-upstream origin'
+alias netdbg='netcoredbg --interpreter=cli --attach'
+alias nettest='dotnet test filter '
 
 echo -e "\033[1;36m"
 echo "╔═══════════════════════════════════════════════════════════╗"
