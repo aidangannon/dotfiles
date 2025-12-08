@@ -36,7 +36,10 @@ return {
                 on_attach = on_nvim_tree_attach,
                 renderer = {
                     full_name = true,
-                }
+                },
+                view = {
+                    width = 40,
+                },
             })
         end
     }
