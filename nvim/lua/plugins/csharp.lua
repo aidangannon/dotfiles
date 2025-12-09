@@ -1,7 +1,5 @@
--- Configure Roslyn LSP directly (like the working config)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- Integrate with nvim-cmp if available
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if ok then
     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
@@ -24,6 +22,14 @@ vim.lsp.config("roslyn", {
             dotnet_analyzer_diagnostics_scope = "openFiles",
             dotnet_compiler_diagnostics_scope = "openFiles",
         },
+        ["csharp|symbol_search"] = {
+            dotnet_search_reference_assemblies = true,
+        },
+    },
+    handlers = {
+        ["workspace/executeCommand"] = function(err, result, ctx, config)
+            return vim.lsp.handlers["workspace/executeCommand"](err, result, ctx, config)
+        end,
     },
 })
 
@@ -38,9 +44,11 @@ end, { desc = "Restart Roslyn LSP" })
 return {
     lsp = {
         "seblyng/roslyn.nvim",
-        -- NO ft lazy loading - seblyng says it causes issues
         opts = {
-            filewatching = "roslyn", -- Explicitly use Roslyn's file watcher (important for WSL)
+            filewatching = "roslyn",
+            config = {
+                capabilities = capabilities,
+            },
         },
     },
 }

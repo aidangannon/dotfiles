@@ -14,7 +14,7 @@ return {
       vim.api.nvim_set_hl(0, "NvimTreeVertSplit", { bg = "#000000" })
       require('base16-colorscheme').setup({
         base00 = '#000000',
-        base01 = '#1a1a1a',
+        base01 = '#000000',
         base02 = '#2d2d2d',
         base03 = '#666666',
         base04 = '#cccccc',
@@ -64,6 +64,40 @@ return {
         base0E = '#FFFF55',
         base0F = '#55FF55',
       })
+    end
+  },
+
+  light = {
+    "RRethy/base16-nvim",
+    config = function()
+      require('base16-colorscheme').setup({
+        base00 = '#FFFFFF',
+        base01 = '#FFFFFF',
+        base02 = '#E5E5E5',
+        base03 = '#CCCCCC',
+        base04 = '#333333',
+        base05 = '#000000',
+        base06 = '#000000',
+        base07 = '#000000',
+        base08 = '#000000',
+        base09 = '#CC9900',
+        base0A = '#008B8B',
+        base0B = '#0A8A00',
+        base0C = '#0066CC',
+        base0D = '#0066CC',
+        base0E = '#CC9900',
+        base0F = '#0A8A00',
+      })
+      vim.api.nvim_set_hl(0, "Normal", { bg = "#FFFFFF" })
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "#FFFFFF" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#FFFFFF" })
+      vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = "#000000" })
+      vim.api.nvim_set_hl(0, "NvimTreeFolderName", { fg = "#000000" })
+      vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { fg = "#000000" })
+      vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { fg = "#999999" })
+      vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "#FFFFFF" })
+      vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "#FFFFFF" })
+      vim.api.nvim_set_hl(0, "NvimTreeVertSplit", { bg = "#FFFFFF" })
     end
   }
 }
