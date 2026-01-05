@@ -27,7 +27,7 @@ require("lazy").setup({
     require("plugins.lang").autocomplete,
     require("plugins.files").files,
     require("plugins.files").explorer,
-    require("plugins.theme").dark,
+    require("plugins.theme").blue,
     {
         "folke/lazydev.nvim",
         ft = "lua",

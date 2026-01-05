@@ -13,6 +13,8 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/nvim/bin:$PATH"
 export PATH="/opt/nvim-linux-x86_64/bin:/opt/nvim/bin:$PATH"
 
+export PATH="/usr/local/bin/tmux:$PATH"
+
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$HOME/.dotnet:$PATH
 
@@ -43,5 +45,18 @@ echo -e "\033[1;33m💻 Host:\033[0m $(hostname)"
 echo -e "\033[1;32m🚩 Wired In Dawggg\033[0m"
 echo ""
 
-tmux
+if [ -z "$TMUX" ]; then
+    tmux kill-server 2>/dev/null
+    tmux new-session
+fi
+
+tmuxinit()
+{
+    tmux split-window -h -p 20 \; \
+        split-window -v -p 35 \; \
+        select-pane -t 0 \; \
+        split-window -v -p 15 \; \
+        select-pane -t 0
+}
+
 alias netcoredbg="/usr/local/bin/netcoredbg/netcoredbg"

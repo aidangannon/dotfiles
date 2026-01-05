@@ -64,6 +64,9 @@ return {
     },
     ats = {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
@@ -78,6 +81,19 @@ return {
                 },
                 highlight = { enable = true },
                 indent = { enable = true },
+                textobjects = {
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            ["<leader>a"] = "@parameter.inner",
+                            ["<leader>m"] = "@function.outer",
+                        },
+                        swap_previous = {
+                            ["<leader>A"] = "@parameter.inner",
+                            ["<leader>M"] = "@function.outer",
+                        },
+                    },
+                },
             })
         end
     },
