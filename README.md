@@ -1,4 +1,4 @@
-# stow-conf
+# dotfiles
 
 Dotfiles symlinked to `~` via Makefile. Bash, nvim, tmux configs.
 
