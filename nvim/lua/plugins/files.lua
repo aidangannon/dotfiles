@@ -36,32 +36,6 @@ return {
                 on_attach = on_nvim_tree_attach,
                 renderer = {
                     full_name = true,
-                    icons = {
-                        glyphs = {
-                            default = "*",
-                            symlink = "@",
-                            bookmark = "^",
-                            folder = {
-                                arrow_closed = "+",
-                                arrow_open = "-",
-                                default = "[+]",
-                                open = "[-]",
-                                empty = "[ ]",
-                                empty_open = "[ ]",
-                                symlink = "[~]",
-                                symlink_open = "[~]",
-                                },
-                            git = {
-                                unstaged = "M",
-                                staged = "A",
-                                unmerged = "U",
-                                renamed = "R",
-                                untracked = "?",
-                                deleted = "D",
-                                ignored = "!",
-                            },
-                        },
-                    },
                 },
                 view = {
                     width = 30,
