@@ -6,6 +6,8 @@ install: uninstall
 	ln -sf $(PWD)/nvim $(HOME)/.config/nvim
 	ln -sf $(PWD)/vim/.vimrc $(HOME)/.vimrc
 	ln -sf $(PWD)/vim/.vim $(HOME)/.vim
+	ln -sf $(PWD)/sway/config $(HOME)/.config/sway/config
+	ln -sf $(PWD)/waybar/config $(HOME)/.config/waybar/config
 
 .PHONY: uninstall
 uninstall:
@@ -15,4 +17,6 @@ uninstall:
 	rm -rf $(HOME)/.config/nvim
 	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.config/sway/config
+	rm -rf $(HOME)/.config/waybar/config
 
