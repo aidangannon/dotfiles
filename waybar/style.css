@@ -1,0 +1,9 @@
+* {
+    background: transparent;
+    color: #FFFFFF;
+    font-family: "UbuntuMono Nerd Font";
+}
+
+#cpu, #memory, #pulseaudio, #backlight {
+    margin: 0 8px;
+}

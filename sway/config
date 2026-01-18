@@ -3,7 +3,7 @@ set $mod Mod4
 set $term alacritty
 set $menu fuzzel
 
-output * bg ~/Downloads/shutterstock_300541445-1.jpg fill
+output * bg ~/Downloads/Argentiere-12.jpg fill
 
 font pango:UbuntuMono Nerd Font, Noto Color Emoji 11
 
@@ -41,7 +41,9 @@ bindsym $mod+l focus right
 bindsym $mod+k focus up
 bindsym $mod+j focus down
 
-bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym $mod+Escape exec swaylock -f
+
+bindsym XF86AudioRaiseVolume exec wpctl set-volume --limit 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
@@ -50,5 +52,11 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 exec wl-paste --watch cliphist store
 bindsym $mod+v exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy && wl-paste -n | xclip -selection clipboard
+
+exec swayidle -w \
+    timeout 300 'swaylock -f' \
+    timeout 600 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f'
 
 exec waybar
