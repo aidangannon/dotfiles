@@ -11,6 +11,7 @@ install: uninstall
 	ln -sf $(PWD)/waybar/style.css $(HOME)/.config/waybar/style.css
 	ln -sf $(PWD)/alacritty/alacritty.toml $(HOME)/.config/alacritty/alacritty.toml
 	ln -sf $(PWD)/swaylock/config $(HOME)/.config/swaylock/config
+	ln -sf $(PWD)/fuzzel/fuzzel.ini $(HOME)/.config/fuzzel/fuzzel.ini
 
 .PHONY: uninstall
 uninstall:
@@ -25,3 +26,4 @@ uninstall:
 	rm -rf $(HOME)/.config/alacritty/alacritty.toml
 	rm -rf $(HOME)/.config/waybar/style.css
 	rm -rf $(HOME)/.config/swaylock/config
+	rm -rf $(HOME)/.config/fuzzel/fuzzel.ini
