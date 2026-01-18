@@ -1,7 +1,17 @@
 set $mod Mod4
 
-set $term kitty
-set $menu wofi --show=drun
+set $term alacritty
+set $menu fuzzel
+
+output * bg ~/Downloads/shutterstock_300541445-1.jpg fill
+
+font pango:UbuntuMono Nerd Font, Noto Color Emoji 11
+
+default_border none
+default_floating_border none
+
+gaps inner 10
+gaps outer 5
 
 input type:keyboard {
     xkb_layout "gb"
@@ -37,5 +47,8 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+exec wl-paste --watch cliphist store
+bindsym $mod+v exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy && wl-paste -n | xclip -selection clipboard
 
 exec waybar

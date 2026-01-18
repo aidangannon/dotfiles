@@ -8,6 +8,7 @@ install: uninstall
 	ln -sf $(PWD)/vim/.vim $(HOME)/.vim
 	ln -sf $(PWD)/sway/config $(HOME)/.config/sway/config
 	ln -sf $(PWD)/waybar/config $(HOME)/.config/waybar/config
+	ln -sf $(PWD)/alacritty/alacritty.toml $(HOME)/.config/alacritty/alacritty.toml
 
 .PHONY: uninstall
 uninstall:
@@ -19,4 +20,5 @@ uninstall:
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/sway/config
 	rm -rf $(HOME)/.config/waybar/config
+	rm -rf $(HOME)/.config/alacritty/alacritty.toml
 

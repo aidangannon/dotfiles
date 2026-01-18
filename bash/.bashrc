@@ -45,11 +45,6 @@ echo -e "\033[1;33m💻 Host:\033[0m $(hostname)"
 echo -e "\033[1;32m🚩 Wired In Dawggg\033[0m"
 echo ""
 
-if [ -z "$TMUX" ]; then
-    tmux kill-session -t dev 2>/dev/null
-    tmux new-session -s dev
-fi
-
 ydle()
 {
     tmux split-window -h -p 20 -c "$current_dir" \; \
