@@ -3,7 +3,7 @@ set $mod Mod4
 set $term alacritty
 set $menu fuzzel
 
-output * bg ~/Downloads/Argentiere-12.jpg fill
+output * bg /home/aidan/Downloads/photo-1548337138-e87d889cc369.jpeg fill
 
 font pango:UbuntuMono Nerd Font, Noto Color Emoji 11
 
@@ -12,6 +12,15 @@ default_floating_border none
 
 gaps inner 10
 gaps outer 5
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable
+for_window [title="Save File"] floating enable
+for_window [title="Open File"] floating enable
 
 input type:keyboard {
     xkb_layout "gb"
@@ -60,7 +69,7 @@ bindsym $mod+5 workspace number 5; mode "default";
 bindsym $mod+Shift+5 splith
 bindsym $mod+Shift+2 splitv
 
-bindsym $mod+Escape exec swaylock -f
+bindsym $mod+Escape exec gtklock
 
 bindsym XF86AudioRaiseVolume exec wpctl set-volume --limit 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
@@ -72,10 +81,12 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 exec wl-paste --watch cliphist store
 bindsym $mod+v exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
 
+bindsym $mod+q exec sway-easyfocus
+
 exec swayidle -w \
-    timeout 300 'swaylock -f' \
+    timeout 300 'gtklock' \
     timeout 600 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f'
+    before-sleep 'gtklock'
 
 exec waybar

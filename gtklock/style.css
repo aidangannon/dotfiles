@@ -1,0 +1,63 @@
+window {
+  background-color: transparent;
+}
+
+#input-field,
+entry,
+entry.password {
+  background-image: none;
+  background-color: #ffffff;
+  border: 0px solid transparent;
+  border-image: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: #333333;
+  font-size: 12px;
+  padding: 8px 12px;
+  min-height: 0;
+}
+
+#input-field:focus,
+entry:focus,
+entry.password:focus {
+  background-image: none;
+  background-color: #ffffff;
+  border: 0px solid transparent;
+  border-image: none;
+  box-shadow: none;
+}
+
+#clock-label, #date-label, #body {
+  color: #333333;
+}
+
+#message-label {
+  color: #F28B82;
+}
+
+#warning-label {
+  color: #A8D5A2;
+}
+
+#unlock-button {
+  background-image: none;
+  background-color: #6495ED;
+  border: 0px solid transparent;
+  border-image: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  color: #ffffff;
+  min-height: 0;
+  min-width: 0;
+}
+
+#unlock-button:hover,
+#unlock-button:active,
+#unlock-button:focus {
+  background-image: none;
+  background-color: #6495ED;
+  border: 0px solid transparent;
+  box-shadow: none;
+}

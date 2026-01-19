@@ -1,0 +1,6 @@
+chars: "0123456789"
+
+label_text_color: "#ffffff"
+label_background_color: "#000000"
+font_size: "64px"
+font_family: "UbuntuMono Nerd Font"

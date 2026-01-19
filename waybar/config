@@ -12,7 +12,7 @@
 	"memory": {"format": "RAM {percentage}%"},
 	
 	"backlight": {
-		"format": "☀️{percent}%",
+		"format": "󰃟 {percent}%",
 		"on-scroll-up": "brightnessctl set +5%",
 		"on-scroll-down": "brightnessctl set 5%-",
 		"reverse-scrolling": 0
@@ -20,9 +20,9 @@
 
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
-		"format-muted": "🔇 {volume}%",
+		"format-muted": "󰝟 {volume}%",
 		"format-icons": {
-			"default": ["🔈", "🔉", "🔊"]
+			"default": ["󰕿", "󰖀", "󰕾"]
 		},
 		"scroll-step": 5,
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"

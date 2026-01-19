@@ -1,4 +1,4 @@
-image=~/Downloads/Argentiere-12.jpg
+image=/home/aidan/Downloads/wind-mill-windmill-wind-turbine-renewable-energy-clean-foggy-white-28-10-2024-1730152232-hd-wallpaper.jpg
 
 disable-caps-lock-text
 indicator-caps-lock
@@ -29,7 +29,5 @@ text-caps-lock-color=00000000
 text-ver-color=00000000
 text-wrong-color=00000000
 
-text-ver=
-text-wrong=
-text-clear=
-text-caps-lock=
+font-size=0
+font=doesnotexist
