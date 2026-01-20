@@ -1,7 +1,7 @@
 set $mod Mod4
 
 set $term alacritty
-set $menu fuzzel
+set $menu wofi --show drun
 
 output * bg /home/aidan/Downloads/photo-1548337138-e87d889cc369.jpeg fill
 
@@ -79,7 +79,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 exec wl-paste --watch cliphist store
-bindsym $mod+v exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
+bindsym $mod+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
 bindsym $mod+q exec sway-easyfocus
 

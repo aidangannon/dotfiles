@@ -15,6 +15,8 @@ install: uninstall
 	ln -sf $(PWD)/sway-easyfocus/config.yaml $(HOME)/.config/sway-easyfocus/config.yaml
 	ln -sf $(PWD)/gtklock/config.ini $(HOME)/.config/gtklock/config.ini
 	ln -sf $(PWD)/gtklock/style.css $(HOME)/.config/gtklock/style.css
+	ln -sf $(PWD)/wofi/config $(HOME)/.config/wofi/config
+	ln -sf $(PWD)/wofi/style.css $(HOME)/.config/wofi/style.css
 
 .PHONY: uninstall
 uninstall:
@@ -33,3 +35,5 @@ uninstall:
 	rm -rf $(HOME)/.config/sway-easyfocus/config.yaml
 	rm -rf $(HOME)/.config/gtklock/config.ini
 	rm -rf $(HOME)/.config/gtklock/style.css
+	rm -rf $(HOME)/.config/wofi/config
+	rm -rf $(HOME)/.config/wofi/style.css
