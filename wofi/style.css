@@ -1,7 +1,15 @@
 * {
-    font-size: 12px;
+    font-size: 15px;
+}
+
+#input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 #input {
     border: none;
+    outline: none;
+    box-shadow: none;
 }

@@ -31,12 +31,12 @@ entry.password:focus {
   color: #333333;
 }
 
-#message-label {
-  color: #F28B82;
+#error-label {
+  color: #CF6679;
 }
 
 #warning-label {
-  color: #A8D5A2;
+    opacity: 0;
 }
 
 #unlock-button {
