@@ -1,26 +1,28 @@
 .PHONY: install
 install: uninstall
-	ln -sf $(PWD)/bash/.bashrc $(HOME)/.bashrc
-	ln -sf $(PWD)/git/.gitconfig $(HOME)/.gitconfig
-	ln -sf $(PWD)/tmux/.tmux.conf $(HOME)/.tmux.conf
-	ln -sf $(PWD)/nvim $(HOME)/.config/nvim
-	ln -sf $(PWD)/vim/.vimrc $(HOME)/.vimrc
-	ln -sf $(PWD)/vim/.vim $(HOME)/.vim
-	ln -sf $(PWD)/sway/config $(HOME)/.config/sway/config
-	ln -sf $(PWD)/waybar/config $(HOME)/.config/waybar/config
-	ln -sf $(PWD)/waybar/style.css $(HOME)/.config/waybar/style.css
-	ln -sf $(PWD)/alacritty/alacritty.toml $(HOME)/.config/alacritty/alacritty.toml
-	ln -sf $(PWD)/swaylock/config $(HOME)/.config/swaylock/config
-	ln -sf $(PWD)/fuzzel/fuzzel.ini $(HOME)/.config/fuzzel/fuzzel.ini
-	ln -sf $(PWD)/sway-easyfocus/config.yaml $(HOME)/.config/sway-easyfocus/config.yaml
-	ln -sf $(PWD)/gtklock/config.ini $(HOME)/.config/gtklock/config.ini
-	ln -sf $(PWD)/gtklock/style.css $(HOME)/.config/gtklock/style.css
-	ln -sf $(PWD)/wofi/config $(HOME)/.config/wofi/config
-	ln -sf $(PWD)/wofi/style.css $(HOME)/.config/wofi/style.css
+	ln -sf $(CURDIR)/bash/.bashrc $(HOME)/.bashrc
+	ln -sf $(CURDIR)/zsh/.zshrc $(HOME)/.zshrc
+	ln -sf $(CURDIR)/git/.gitconfig $(HOME)/.gitconfig
+	ln -sf $(CURDIR)/tmux/.tmux.conf $(HOME)/.tmux.conf
+	ln -sf $(CURDIR)/nvim $(HOME)/.config/nvim
+	ln -sf $(CURDIR)/vim/.vimrc $(HOME)/.vimrc
+	ln -sf $(CURDIR)/vim/.vim $(HOME)/.vim
+	ln -sf $(CURDIR)/sway/config $(HOME)/.config/sway/config
+	ln -sf $(CURDIR)/waybar/config $(HOME)/.config/waybar/config
+	ln -sf $(CURDIR)/waybar/style.css $(HOME)/.config/waybar/style.css
+	ln -sf $(CURDIR)/alacritty/alacritty.toml $(HOME)/.config/alacritty/alacritty.toml
+	ln -sf $(CURDIR)/swaylock/config $(HOME)/.config/swaylock/config
+	ln -sf $(CURDIR)/fuzzel/fuzzel.ini $(HOME)/.config/fuzzel/fuzzel.ini
+	ln -sf $(CURDIR)/sway-easyfocus/config.yaml $(HOME)/.config/sway-easyfocus/config.yaml
+	ln -sf $(CURDIR)/gtklock/config.ini $(HOME)/.config/gtklock/config.ini
+	ln -sf $(CURDIR)/gtklock/style.css $(HOME)/.config/gtklock/style.css
+	ln -sf $(CURDIR)/wofi/config $(HOME)/.config/wofi/config
+	ln -sf $(CURDIR)/wofi/style.css $(HOME)/.config/wofi/style.css
 
 .PHONY: uninstall
 uninstall:
 	rm -rf $(HOME)/.bashrc
+	rm -rf $(HOME)/.zshrc
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.tmux.conf
 	rm -rf $(HOME)/.config/nvim
@@ -37,3 +39,11 @@ uninstall:
 	rm -rf $(HOME)/.config/gtklock/style.css
 	rm -rf $(HOME)/.config/wofi/config
 	rm -rf $(HOME)/.config/wofi/style.css
+
+.PHONY: install-root
+install-root: uninstall-root
+	sudo ln -sf $(CURDIR)/keyd/default.conf /etc/keyd/default.conf
+
+.PHONY: uninstall-root
+uninstall-root:
+	sudo rm -rf /etc/keyd/default.conf

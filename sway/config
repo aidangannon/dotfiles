@@ -21,6 +21,7 @@ for_window [window_role="bubble"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
+for_window [app_id="^$"] floating enable, move position 1540 35
 for_window [app_id="google-chrome" floating] floating enable
 for_window [app_id="google-chrome" title="^(?!.*Google Chrome$).*$"] floating enable
 for_window [app_id="google-chrome"] floating enable, resize set width 400 height 300
@@ -35,10 +36,10 @@ input type:keyboard {
 }
 
 mode "resize" {
-    bindsym h resize shrink width 10px
-    bindsym j resize grow height 10px
-    bindsym k resize shrink height 10px
-    bindsym l resize grow width 10px
+    bindsym h resize shrink width 10ppt
+    bindsym j resize grow height 10ppt
+    bindsym k resize shrink height 10ppt
+    bindsym l resize grow width 10ppt
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
