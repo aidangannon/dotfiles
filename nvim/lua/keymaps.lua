@@ -10,3 +10,13 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+
+vim.keymap.set({'n', 'v'}, '<C-b>', 'h')
+vim.keymap.set({'n', 'v'}, '<C-f>', 'l')
+vim.keymap.set({'n', 'v'}, '<C-p>', 'k')
+vim.keymap.set({'n', 'v'}, '<C-n>', 'j')
+
+vim.keymap.set({'n', 'v'}, 'h', '<Nop>')
+vim.keymap.set({'n', 'v'}, 'j', '<Nop>')
+vim.keymap.set({'n', 'v'}, 'k', '<Nop>')
+vim.keymap.set({'n', 'v'}, 'l', '<Nop>')
