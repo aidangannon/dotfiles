@@ -41,7 +41,7 @@ echo "╚═══════════════════════�
 echo -e "\033[0m"
 echo -e "\033[1;33m👤 User:\033[0m $(whoami)"
 echo -e "\033[1;33m📅 Date:\033[0m $(date '+%A, %B %d, %Y - %I:%M %p')"
-echo -e "\033[1;33m💻 Host:\033[0m $(hostname)"
+echo -e "\033[1;33m💻 Host:\033[0m $(cat /etc/hostname)"
 echo -e "\033[1;32m🚩 Wired In Dawggg\033[0m"
 echo ""
 

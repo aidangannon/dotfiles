@@ -4,6 +4,35 @@
     font-family: "UbuntuMono Nerd Font";
 }
 
-#cpu, #memory, #pulseaudio, #backlight {
+tooltip {
+    background: #1e1e2e;
+    border: none;
+    border-radius: 0;
+}
+
+tooltip label {
+    color: #FFFFFF;
+}
+
+#workspaces button {
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button:hover {
+    border: none;
+    box-shadow: none;
+    background: #444444;
+}
+
+#cpu, #memory, #pulseaudio, #backlight, #battery {
     margin: 0 8px;
+}
+
+#battery.warning {
+    color: #f0c674;
+}
+
+#battery.critical {
+    color: #cc6666;
 }

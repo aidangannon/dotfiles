@@ -4,10 +4,10 @@
 	"height": 30,
 
 	"modules-left": ["sway/workspaces"],
-	"modules-right": ["cpu", "memory", "pulseaudio", "backlight"],
+	"modules-right": ["cpu", "memory", "pulseaudio", "backlight", "battery"],
 	"modules-center": ["clock"],
 	
-	"clock": {"format": "{:%H:%M %d/%m/%Y}"},
+	"clock": {"interval": 1, "format": "{:%H:%M:%S %d/%m/%Y}", "tooltip": false},
 	"cpu": {"format": "CPU {usage}%"},
 	"memory": {"format": "RAM {percentage}%"},
 	
@@ -26,5 +26,17 @@
 		},
 		"scroll-step": 5,
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	},
+
+	"battery": {
+		"interval": 60,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": "󰂄 {capacity}%",
+		"format-plugged": "󰚥 {capacity}%",
+		"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
 	}
 }
