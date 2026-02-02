@@ -18,6 +18,7 @@ install: uninstall
 	ln -sf $(CURDIR)/gtklock/style.css $(HOME)/.config/gtklock/style.css
 	ln -sf $(CURDIR)/wofi/config $(HOME)/.config/wofi/config
 	ln -sf $(CURDIR)/wofi/style.css $(HOME)/.config/wofi/style.css
+	ln -sf $(CURDIR)/karabiner/karabiner.json $(HOME)/.config/karabiner/karabiner.json
 
 .PHONY: uninstall
 uninstall:
@@ -39,6 +40,7 @@ uninstall:
 	rm -rf $(HOME)/.config/gtklock/style.css
 	rm -rf $(HOME)/.config/wofi/config
 	rm -rf $(HOME)/.config/wofi/style.css
+	rm -rf $(HOME)/.config/karabiner/karabiner.json
 
 .PHONY: install-root
 install-root: uninstall-root
