@@ -63,36 +63,21 @@ return {
     },
     ats = {
         "nvim-treesitter/nvim-treesitter",
+        lazy = false,
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
         build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "python",
-                    "typescript",
-                    "javascript",
-                    "lua",
-                    "hcl",
-                    "terraform",
-                    "c_sharp"
-                },
-                highlight = { enable = true },
-                indent = { enable = true },
-                textobjects = {
-                    swap = {
-                        enable = true,
-                        swap_next = {
-                            ["<leader>a"] = "@parameter.inner",
-                            ["<leader>m"] = "@function.outer",
-                        },
-                        swap_previous = {
-                            ["<leader>A"] = "@parameter.inner",
-                            ["<leader>M"] = "@function.outer",
-                        },
-                    },
-                },
+            require("nvim-treesitter").setup({})
+            require("nvim-treesitter").install({
+                "python",
+                "typescript",
+                "javascript",
+                "lua",
+                "hcl",
+                "terraform",
+                "c_sharp"
             })
         end
     },
