@@ -63,7 +63,6 @@ return {
     },
     ats = {
         "nvim-treesitter/nvim-treesitter",
-        lazy = false,
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
@@ -93,6 +92,10 @@ return {
             if ok then
                 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
             end
+
+            capabilities.workspace = capabilities.workspace or {}
+            capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
+            capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
             require("mason").setup()
             require("mason-lspconfig").setup({
