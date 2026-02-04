@@ -99,17 +99,17 @@ return {
 
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = {"pyrefly", "lua_ls", "ts_ls", "terraformls"}
+                ensure_installed = {"pyright", "lua_ls", "ts_ls", "terraformls"}
             })
 
             vim.lsp.config("ts_ls", { capabilities = capabilities })
             vim.lsp.config("lua_ls", { capabilities = capabilities })
-            vim.lsp.config("pyrefly", { capabilities = capabilities })
+            vim.lsp.config("pyright", { capabilities = capabilities })
             vim.lsp.config("terraformls", { capabilities = capabilities })
 
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("lua_ls")
-            vim.lsp.enable("pyrefly")
+            vim.lsp.enable("pyright")
             vim.lsp.enable("terraformls")
         end
     },
