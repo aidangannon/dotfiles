@@ -7,7 +7,7 @@ return {
         },
         build = ":PympleBuild",
         config = function()
-            require("pymple").setup()
+            require("pymple").setup({ auto_apply = true })
         end,
     },
 }

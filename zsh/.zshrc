@@ -99,3 +99,4 @@ ydle() {
         send-keys -t 3 "cd ~ && clear" C-m \; \
         send-keys -t 1 "cd $(pwd) && claude --permission-mode plan" C-m
 }
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
