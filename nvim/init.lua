@@ -33,9 +33,9 @@ require("lazy").setup({
     require("plugins.lang").ats,
     require("plugins.lang").lsp,
     require("plugins.lang").autocomplete,
-    require("plugins.python").lsp,
     require("plugins.files").files,
     require("plugins.files").explorer,
+    require("plugins.files").lsp,
     {
         "folke/lazydev.nvim",
         ft = "lua",

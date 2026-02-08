@@ -6,6 +6,8 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
+vim.lsp.set_log_level("OFF")
+
 local function lsp_keymaps()
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
@@ -76,7 +78,7 @@ return {
                 "lua",
                 "hcl",
                 "terraform",
-                "c_sharp"
+                "c_sharp",
             })
         end
     },
@@ -99,17 +101,25 @@ return {
 
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = {"pyright", "lua_ls", "ts_ls", "terraformls"}
+                ensure_installed = {
+                    "basedpyright",
+                    "ruff",
+                    "lua_ls",
+                    "ts_ls",
+                    "terraformls",
+                }
             })
 
             vim.lsp.config("ts_ls", { capabilities = capabilities })
             vim.lsp.config("lua_ls", { capabilities = capabilities })
-            vim.lsp.config("pyright", { capabilities = capabilities })
+            vim.lsp.config("basedpyright", { capabilities = capabilities })
+            vim.lsp.config("ruff", { capabilities = capabilities })
             vim.lsp.config("terraformls", { capabilities = capabilities })
 
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("lua_ls")
-            vim.lsp.enable("pyright")
+            vim.lsp.enable("basedpyright")
+            vim.lsp.enable("ruff")
             vim.lsp.enable("terraformls")
         end
     },

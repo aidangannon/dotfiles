@@ -19,6 +19,16 @@ end
 nvim_tree_keymaps()
 
 return {
+    lsp = {
+        "antosha417/nvim-lsp-file-operations",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-tree.lua",
+        },
+        config = function()
+            require("lsp-file-operations").setup()
+        end
+    },
     files = {
         "folke/snacks.nvim",
         lazy = false,
@@ -43,6 +53,19 @@ return {
                     relativenumber = true
                 },
             })
+
+            local Event = require("nvim-tree.api").events
+            Event.subscribe(Event.Event.NodeRenamed, function()
+                vim.defer_fn(function()
+                    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+                        if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].modified then
+                            vim.api.nvim_buf_call(bufnr, function()
+                                vim.cmd("silent! write")
+                            end)
+                        end
+                    end
+                end, 200)
+            end)
         end
     }
 }
