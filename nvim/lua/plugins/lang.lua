@@ -106,7 +106,7 @@ return {
                     "ruff",
                     "lua_ls",
                     "ts_ls",
-                    "terraformls",
+                    "terraformls"
                 }
             })
 
@@ -115,12 +115,20 @@ return {
             vim.lsp.config("basedpyright", { capabilities = capabilities })
             vim.lsp.config("ruff", { capabilities = capabilities })
             vim.lsp.config("terraformls", { capabilities = capabilities })
+            vim.lsp.config("pytest_lsp",
+            {
+                capabilities = capabilities,
+                cmd = { 'pytest-language-server' },
+                filetypes = { 'python' },
+                root_markers = { 'pyproject.toml', '.git' }
+            })
 
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("lua_ls")
             vim.lsp.enable("basedpyright")
             vim.lsp.enable("ruff")
             vim.lsp.enable("terraformls")
+            vim.lsp.enable("pytest_lsp")
         end
     },
     autocomplete = {
@@ -154,5 +162,14 @@ return {
                 }
             })
         end
+    },
+    refactoring = {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        lazy = false,
+        opts = {},
     }
 }
