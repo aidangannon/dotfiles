@@ -34,6 +34,7 @@ require("lazy").setup({
     require("plugins.lang").lsp,
     require("plugins.lang").autocomplete,
     require("plugins.lang").refactoring,
+    require("plugins.test"),
     require("plugins.files").files,
     require("plugins.files").explorer,
     require("plugins.files").lsp,
@@ -50,3 +51,4 @@ require("lazy").setup({
 
 require("keymaps")
 require("autocmds")
+require("usercmds")
