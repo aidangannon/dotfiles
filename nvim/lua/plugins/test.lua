@@ -12,6 +12,8 @@ return {
       adapters = {
         require("neotest-python")({
           runner = "pytest",
+          python = "venv/bin/python",  -- Path to your venv python
+          args = { "--rootdir=.", "-c", "pyproject.toml" }
         }),
         require("neotest-dotnet")({
           dap = { justMyCode = false },
