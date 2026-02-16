@@ -55,7 +55,7 @@ alias git-rollback='git reset --hard'
 alias netdbg='netcoredbg --interpreter=cli --attach'
 alias nettest='dotnet test --filter '
 alias nettest-dbg='VSTEST_HOST_DEBUG=1 dotnet test --filter '
-alias netcoredbg="/usr/local/bin/netcoredbg/netcoredbg"
+alias netrun-dbg='VSTEST_HOST_DEBUG=1 dotnet run'
 
 echo -e "\033[1;37m"
 echo "                                                          "
