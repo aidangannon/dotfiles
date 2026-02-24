@@ -37,6 +37,7 @@ require("lazy").setup({
     require("plugins.test"),
     require("plugins.files").files,
     require("plugins.files").explorer,
+    require("plugins.markdown"),
     require("plugins.files").lsp,
     {
         "folke/lazydev.nvim",

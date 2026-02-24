@@ -23,3 +23,17 @@ vim.api.nvim_create_user_command("Ruff",
         vim.cmd('copen')
     end, {}
 )
+
+vim.api.nvim_create_user_command("DotnetBuild",
+    function ()
+        local files = vim.fn.systemlist("dotnet build -clp:ErrorsOnly")
+
+        vim.fn.setqflist({}, ' ', {
+            title = "dotnet build",
+            lines = files,
+            efm = "%f(%l\\,%c): %m"
+        })
+
+        vim.cmd('copen')
+    end, {}
+)

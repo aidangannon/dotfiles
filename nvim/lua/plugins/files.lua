@@ -1,9 +1,8 @@
 local snacks_keymaps = {
-    { "<leader>ff", function() Snacks.picker.files() end },
-    { "<leader>fg", function() Snacks.picker.grep() end },
-    { "<leader>fs", function() Snacks.picker.lsp_symbols() end },
-    { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end },
-    { "<leader>rF", function() Snacks.rename.rename_file() end },
+    { "<leader>ff", function() require("fzf-lua").files() end },
+    { "<leader>fg", function() require("fzf-lua").live_grep() end },
+    { "<leader>fs", function() require("fzf-lua").lsp_document_symbols() end },
+    { "<leader>fS", function() require("fzf-lua").lsp_workspace_symbols() end },
 }
 
 local function nvim_tree_keymaps()
@@ -30,16 +29,17 @@ return {
         end
     },
     files = {
-        "folke/snacks.nvim",
-        lazy = false,
-        opts = {
-            picker = { enabled = true },
-            rename = { enabled = true }
-        },
+        "ibhagwan/fzf-lua",
+        cmd = "Fzflua",
         keys = snacks_keymaps
     },
     explorer = {
         "nvim-tree/nvim-tree.lua",
+        opts = {
+            filters = {
+                git_ignored = false
+            }
+        },
         dependencies = { "folke/snacks.nvim" },
         config = function()
             require("nvim-tree").setup({
