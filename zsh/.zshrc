@@ -57,6 +57,7 @@ alias nettest='dotnet test --filter '
 alias nettest-dbg='VSTEST_HOST_DEBUG=1 dotnet test --filter '
 alias netrun-dbg='VSTEST_HOST_DEBUG=1 dotnet run'
 alias checkout='git checkout $(git branch | fzf)'
+alias add='git add $(git ls-files -m | fzf)'
 
 echo -e "\033[1;37m"
 echo "                                                          "
