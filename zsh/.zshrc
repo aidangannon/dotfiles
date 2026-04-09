@@ -56,6 +56,7 @@ alias netdbg='netcoredbg --interpreter=cli --attach'
 alias nettest='dotnet test --filter '
 alias nettest-dbg='VSTEST_HOST_DEBUG=1 dotnet test --filter '
 alias netrun-dbg='VSTEST_HOST_DEBUG=1 dotnet run'
+alias checkout='git checkout $(git branch | fzf)'
 
 echo -e "\033[1;37m"
 echo "                                                          "
