@@ -11,6 +11,12 @@ vim.api.nvim_create_user_command("Pyright",
     end, {}
 )
 
+vim.api.nvim_create_user_command("RuffFormat",
+    function()
+        vim.lsp.buf.format({ name = "ruff", async = false })
+    end, {}
+)
+
 vim.api.nvim_create_user_command("Ruff",
     function ()
         local files = vim.fn.systemlist("ruff check --output-format=concise . | cut -d: -f1 | sort -u")

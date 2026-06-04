@@ -90,7 +90,10 @@ return {
             "saghen/blink.cmp",
         },
         config = function()
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
+            local capabilities = vim.tbl_deep_extend("force",
+                require("blink.cmp").get_lsp_capabilities(),
+                require("lsp-file-operations").default_capabilities()
+            )
 
             capabilities.workspace = capabilities.workspace or {}
             capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
@@ -99,8 +102,7 @@ return {
             require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "basedpyright",
-                    "pylsp",
+                    "pyrefly",
                     "ruff",
                     "lua_ls",
                     "ts_ls",
@@ -110,58 +112,8 @@ return {
 
             vim.lsp.config("ts_ls", { capabilities = capabilities })
             vim.lsp.config("lua_ls", { capabilities = capabilities })
-            vim.lsp.config("basedpyright", {
-                capabilities = capabilities,
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            autoImportCompletions = true,
-                            autoSearchPaths = true,
-                            diagnosticMode = "workspace",
-                        }
-                    }
-                }
-            })
-            local pylsp_site_packages = (function()
-                local venv = vim.fn.finddir(".venv", vim.fn.getcwd() .. ";")
-                if venv == "" then return nil end
-                local lib = vim.fn.fnamemodify(venv, ":p") .. "lib"
-                local dirs = vim.fn.glob(lib .. "/python*/site-packages", false, true)
-                return #dirs > 0 and dirs[1] or nil
-            end)()
-            vim.lsp.config("pylsp", {
-                capabilities = capabilities,
-                cmd = pylsp_site_packages
-                    and { "env", "PYTHONPATH=" .. pylsp_site_packages, "pylsp" }
-                    or { "pylsp" },
-                settings = {
-                    pylsp = {
-                        plugins = {
-                            jedi_completion = {
-                                enabled = true,
-                                include_params = false,
-                                fuzzy = false,
-                            },
-                            rope_autoimport = {
-                                enabled = true,
-                                memory = true,
-                                completions = { enabled = true },
-                                code_actions = { enabled = true },
-                            },
-                            jedi_definition = { enabled = false },
-                            jedi_hover = { enabled = false },
-                            jedi_references = { enabled = false },
-                            jedi_signature_help = { enabled = false },
-                            jedi_symbols = { enabled = false },
-                            pyflakes = { enabled = true },
-                            pycodestyle = { enabled = false },
-                            pylint = { enabled = false },
-                            mccabe = { enabled = false },
-                        },
-                    },
-                },
-            })
-            vim.lsp.enable("pylsp")
+            vim.lsp.config("pyrefly", { capabilities = capabilities })
+            vim.lsp.enable("pyrefly")
             vim.lsp.config("ruff", { capabilities = capabilities })
             vim.lsp.config("terraformls", { capabilities = capabilities })
             vim.lsp.config("pytest_lsp",
@@ -174,7 +126,6 @@ return {
 
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("lua_ls")
-            vim.lsp.enable("basedpyright")
             vim.lsp.enable("ruff")
             vim.lsp.enable("terraformls")
             vim.lsp.enable("pytest_lsp")
