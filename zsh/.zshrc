@@ -57,6 +57,7 @@ alias nettest='dotnet test --filter '
 alias nettest-dbg='VSTEST_HOST_DEBUG=1 dotnet test --filter '
 alias netrun-dbg='VSTEST_HOST_DEBUG=1 dotnet run'
 alias checkout='git checkout $(git branch | fzf)'
+alias merge='git merge $(git branch | fzf)'
 alias add='git add $(git ls-files -m | fzf)'
 
 echo -e "\033[1;37m"
@@ -101,4 +102,16 @@ ydle() {
         send-keys -t 3 "cd ~ && clear" C-m \; \
         send-keys -t 1 "cd $(pwd) && claude --permission-mode plan" C-m
 }
+
+fkill() {
+  local pid
+  pid=$(ps aux | fzf --header='Select process to kill' | awk '{print $2}')
+  if [[ -n "$pid" ]]; then
+    kill -9 "$pid"
+    echo "Killed process $pid"
+  else
+    echo "No process selected."
+  fi
+}
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

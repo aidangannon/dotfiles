@@ -35,15 +35,14 @@ return {
     },
     explorer = {
         "nvim-tree/nvim-tree.lua",
-        opts = {
-            filters = {
-                git_ignored = false
-            }
-        },
         dependencies = { "folke/snacks.nvim" },
         config = function()
             require("nvim-tree").setup({
                 on_attach = on_nvim_tree_attach,
+                filters = {
+                    dotfiles = false,
+                    git_ignored = false,
+                },
                 renderer = {
                     full_name = true,
                 },
