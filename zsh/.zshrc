@@ -61,7 +61,13 @@ trf() {
     | grep "^  " \
     | sed 's/^  //' \
     | fzf)
-  [ -n "$test" ] && dotnet test --filter-method "$test"
+  if [ -n "$test" ]; then
+    local dll=$(find . -path "*/bin/Debug/*.dll" | while read f; do
+      name=$(basename "$f" .dll)
+      echo "$test" | grep -q "^${name}\." && echo "$f" && break
+    done)
+    dotnet "$dll" -method "$test"
+  fi
 }
 
 trf-dbg() {
