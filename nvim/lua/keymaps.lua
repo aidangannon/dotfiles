@@ -10,6 +10,7 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>f', ':RuffFormat<CR>', { desc = "Format with ruff" })
 
 vim.keymap.set({'n', 'v'}, '<Left>', 'h')
 vim.keymap.set({'n', 'v'}, '<Right>', 'l')

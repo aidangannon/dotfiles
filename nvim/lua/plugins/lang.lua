@@ -1,5 +1,5 @@
 vim.diagnostic.config({
-    update_in_insert = true,
+    update_in_insert = false,
     virtual_text = true,
     signs = true,
     underline = true,
@@ -87,13 +87,13 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+            "saghen/blink.cmp",
         },
         config = function()
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-            if ok then
-                capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-            end
+            local capabilities = vim.tbl_deep_extend("force",
+                require("blink.cmp").get_lsp_capabilities(),
+                require("lsp-file-operations").default_capabilities()
+            )
 
             capabilities.workspace = capabilities.workspace or {}
             capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
@@ -102,7 +102,7 @@ return {
             require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "basedpyright",
+                    "pyrefly",
                     "ruff",
                     "lua_ls",
                     "ts_ls",
@@ -112,7 +112,8 @@ return {
 
             vim.lsp.config("ts_ls", { capabilities = capabilities })
             vim.lsp.config("lua_ls", { capabilities = capabilities })
-            vim.lsp.config("basedpyright", { capabilities = capabilities })
+            vim.lsp.config("pyrefly", { capabilities = capabilities })
+            vim.lsp.enable("pyrefly")
             vim.lsp.config("ruff", { capabilities = capabilities })
             vim.lsp.config("terraformls", { capabilities = capabilities })
             vim.lsp.config("pytest_lsp",
@@ -125,43 +126,47 @@ return {
 
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("lua_ls")
-            vim.lsp.enable("basedpyright")
             vim.lsp.enable("ruff")
             vim.lsp.enable("terraformls")
             vim.lsp.enable("pytest_lsp")
         end
     },
     autocomplete = {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "L3MON4D3/LuaSnip"
-        },
-        config = function()
-            local cmp = require("cmp")
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({
-                        select = true,
-                        behavior = cmp.ConfirmBehavior.Replace
-                    }),
-                    ["<C-Space>"] = cmp.mapping.complete()
-                }),
-                sources = {
-                    { name = "nvim_lsp" }
-                },
-                experimental = {
-                    ghost_text = true
+        "saghen/blink.cmp",
+        version = "*",
+        opts = {
+            keymap = {
+                preset = "default",
+                ["<CR>"] = { "accept", "fallback" },
+                ["<C-e>"] = { "cancel", "fallback" },
+                ["<C-Space>"] = { "show", "fallback" },
+            },
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+                providers = {
+                    lsp = {
+                        async = true,
+                    },
+                    buffer = {
+                        opts = {
+                            get_bufnrs = function() return vim.api.nvim_list_bufs() end,
+                        }
+                    }
                 }
-            })
-        end
+            },
+            completion = {
+                ghost_text = { enabled = true },
+                list = {
+                    selection = {
+                        preselect = true,
+                        auto_insert = false,
+                    }
+                },
+                menu = {
+                    auto_show_delay_ms = 150,
+                },
+            },
+        }
     },
     refactoring = {
         "ThePrimeagen/refactoring.nvim",
