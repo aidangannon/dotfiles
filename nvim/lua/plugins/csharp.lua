@@ -10,6 +10,7 @@ vim.lsp.config("roslyn", {
     settings = {
         ["csharp|completion"] = {
             dotnet_show_completion_items_from_unimported_namespaces = true,
+            dotnet_show_name_completion_suggestions = true
         },
         ["csharp|inlay_hints"] = {
             csharp_enable_inlay_hints_for_implicit_object_creation = true,
@@ -45,7 +46,7 @@ return {
     lsp = {
         "seblyng/roslyn.nvim",
         opts = {
-            filewatching = "roslyn",
+            filewatching = true,
             config = {
                 capabilities = capabilities,
             },
