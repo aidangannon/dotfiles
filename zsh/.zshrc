@@ -61,7 +61,7 @@ trf() {
     | grep "^  " \
     | sed 's/^  //' \
     | fzf)
-  [ -n "$test" ] && dotnet test -- --treenode-filter "/**/*${test}*"
+  [ -n "$test" ] && dotnet test --filter-method "$test"
 }
 
 trf-dbg() {
@@ -69,7 +69,17 @@ trf-dbg() {
     | grep "^  " \
     | sed 's/^  //' \
     | fzf)
-  [ -n "$test" ] && VSTEST_HOST_DEBUG=1 dotnet test -- --treenode-filter "/**/*${test}*"
+  if [ -n "$test" ]; then
+    local dll=$(find . -path "*/bin/Debug/*.dll" | while read f; do
+      name=$(basename "$f" .dll)
+      echo "$test" | grep -q "^${name}\." && echo "$f" && break
+    done)
+    dotnet "$dll" -method "$test" -waitForDebugger &
+    local pid=$!
+    sleep 1
+    netcoredbg --interpreter=cli --attach $pid
+    wait $pid
+  fi
 }
 alias netrun-dbg='VSTEST_HOST_DEBUG=1 dotnet run'
 alias checkout='git checkout $(git branch | fzf)'
