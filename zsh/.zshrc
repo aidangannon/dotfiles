@@ -55,6 +55,22 @@ alias git-rollback='git reset --hard'
 alias netdbg='netcoredbg --interpreter=cli --attach'
 alias nettest='dotnet test --filter '
 alias nettest-dbg='VSTEST_HOST_DEBUG=1 dotnet test --filter '
+
+trf() {
+  local test=$(dotnet test --list-tests 2>/dev/null \
+    | grep "^  " \
+    | sed 's/^  //' \
+    | fzf)
+  [ -n "$test" ] && dotnet test -- --treenode-filter "/**/*${test}*"
+}
+
+trf-dbg() {
+  local test=$(dotnet test --list-tests 2>/dev/null \
+    | grep "^  " \
+    | sed 's/^  //' \
+    | fzf)
+  [ -n "$test" ] && VSTEST_HOST_DEBUG=1 dotnet test -- --treenode-filter "/**/*${test}*"
+}
 alias netrun-dbg='VSTEST_HOST_DEBUG=1 dotnet run'
 alias checkout='git checkout $(git branch | fzf)'
 alias merge='git merge $(git branch | fzf)'
