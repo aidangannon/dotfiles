@@ -4,6 +4,7 @@ set $term alacritty
 set $menu wofi --show drun
 
 output * bg /home/aidan/Downloads/photo-1548337138-e87d889cc369.jpeg fill
+output HDMI-A-1 scale 0.8
 
 font pango:UbuntuMono Nerd Font, Noto Color Emoji 11
 
