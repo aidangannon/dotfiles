@@ -125,6 +125,21 @@
                 "to": [{"key_code": "right_arrow"}]
               }
             ]
+          },
+          {
+            "description": "Spaces",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {"key_code": "f", "modifiers": {"mandatory": ["command"]}},
+                "to": [{"key_code": "right_arrow", "modifiers": ["control"]}]
+              },
+              {
+                "type": "basic",
+                "from": {"key_code": "b", "modifiers": {"mandatory": ["command"]}},
+                "to": [{"key_code": "left_arrow", "modifiers": ["control"]}]
+              }
+            ]
           }
         ]
       }
