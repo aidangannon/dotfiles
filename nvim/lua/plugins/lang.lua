@@ -66,7 +66,7 @@ return {
     ats = {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
+            { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
         },
         build = ":TSUpdate",
         config = function()
@@ -173,6 +173,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "lewis6991/async.nvim",
         },
         lazy = false,
         opts = {},

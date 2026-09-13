@@ -4,7 +4,10 @@ set $term alacritty
 set $menu wofi --show drun
 
 output * bg /home/aidan/Downloads/photo-1548337138-e87d889cc369.jpeg fill
-output HDMI-A-1 scale 0.8
+
+# Disable the laptop panel when the lid is closed, re-enable when opened
+bindswitch --reload lid:on output eDP-1 disable
+bindswitch --reload lid:off output eDP-1 enable
 
 font pango:UbuntuMono Nerd Font, Noto Color Emoji 11
 
@@ -33,7 +36,12 @@ for_window [title="Save File"] floating enable
 for_window [title="Open File"] floating enable
 
 input type:keyboard {
-    xkb_layout "gb"
+    xkb_layout "us"
+}
+
+input "4012:2782:keyd_virtual_keyboard" {
+    xkb_layout "custom"
+    xkb_variant "isotilde"
 }
 
 mode "resize" {
