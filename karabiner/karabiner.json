@@ -125,6 +125,26 @@
                 "to": [{"key_code": "right_arrow"}]
               }
             ]
+          },
+          {
+            "description": "Spaces",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {"key_code": "1", "modifiers": {"mandatory": ["command"]}},
+                "to": [{"key_code": "1", "modifiers": ["control"]}]
+              },
+              {
+                "type": "basic",
+                "from": {"key_code": "2", "modifiers": {"mandatory": ["command"]}},
+                "to": [{"key_code": "2", "modifiers": ["control"]}]
+              },
+              {
+                "type": "basic",
+                "from": {"key_code": "3", "modifiers": {"mandatory": ["command"]}},
+                "to": [{"key_code": "3", "modifiers": ["control"]}]
+              }
+            ]
           }
         ]
       }
