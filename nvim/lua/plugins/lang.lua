@@ -6,7 +6,7 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
-vim.lsp.set_log_level("OFF")
+vim.lsp.log.set_level("OFF")
 
 local function lsp_keymaps()
     vim.api.nvim_create_autocmd("LspAttach", {

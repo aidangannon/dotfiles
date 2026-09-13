@@ -2,7 +2,6 @@ vim.api.nvim_create_autocmd({
     "InsertLeave",
     "TextChanged",
     "TextChangedI",
-    "BufModifiedSet",
     "BufLeave",
     "CmdlineLeave"
 }, {
